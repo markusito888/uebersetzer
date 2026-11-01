@@ -19,3 +19,12 @@ Beim ersten Start in den Einstellungen den Claude-API-Schlüssel eintragen (blei
 - `designs/` – die beiden Design-Entwürfe
 
 Nach Änderungen an der App in `app/sw.js` die Versionsnummer (`uebersetzer-v2`) erhöhen.
+
+## Online (Mac und iPhone)
+https://markusito888.github.io/uebersetzer/ (GitHub Pages aus dem Zweig `main`).
+
+- **iPhone:** Adresse in Safari öffnen → Teilen-Knopf → „Zum Home-Bildschirm“.
+- **Mac:** Adresse in Safari öffnen → Menü „Ablage“ → „Zum Dock hinzufügen“.
+
+Der API-Schlüssel wird auf jedem Gerät einmal in den Einstellungen eingetragen.
+Änderungen veröffentlichen: committen und `git push`. GitHub Pages baut dann in etwa einer Minute neu.

@@ -4,7 +4,7 @@
   "typ": "app",
   "status": "in-arbeit",
   "start": "Übersetzer starten.command",
-  "url": "http://localhost:4380/app/",
+  "url": "https://markusito888.github.io/uebersetzer/",
   "tags": [
     "übersetzer",
     "deutsch",
@@ -16,10 +16,10 @@
   ],
   "naechsteSchritte": [
     "Claude-API-Schlüssel in den Einstellungen eintragen und echte Übersetzungen testen",
-    "Hosting fürs iPhone festlegen (z. B. GitHub Pages), damit die App per HTTPS erreichbar ist",
-    "Auf dem Mac in Safari „Zum Dock hinzufügen“, auf dem iPhone „Zum Home-Bildschirm“"
+    "Auf dem iPhone in Safari öffnen und „Zum Home-Bildschirm“ wählen",
+    "Auf dem Mac in Safari „Ablage › Zum Dock hinzufügen“ wählen"
   ],
-  "notizen": "Web-App (PWA) in app/, Design im Stil der Kommandozentrale. Claude-SDK 1.3.0 als eine Datei in app/vendor gebündelt. Modell claude-opus-5-5. Entwürfe A und B liegen in designs/.",
+  "notizen": "Web-App (PWA) in app/, Design im Stil der Kommandozentrale. Claude-SDK 1.3.0 als eine Datei in app/vendor gebündelt. Modell claude-opus-5-5. Entwürfe A und B liegen in designs/. Online über GitHub Pages (Repository markusito888/uebersetzer, Zweig main). Änderungen: committen und pushen, Pages baut automatisch neu.",
   "verlauf": [
     {
       "datum": "2026-11-01",
@@ -32,6 +32,10 @@
     {
       "datum": "2026-11-01",
       "text": "Deutsch als dritte Sprache ergänzt, Zielsprache jetzt wählbar."
+    },
+    {
+      "datum": "2026-11-01",
+      "text": "Auf GitHub Pages veröffentlicht: markusito888.github.io/uebersetzer."
     }
   ]
 }
