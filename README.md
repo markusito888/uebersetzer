@@ -28,3 +28,10 @@ https://markusito888.github.io/uebersetzer/ (GitHub Pages aus dem Zweig `main`).
 
 Der API-Schlüssel wird auf jedem Gerät einmal in den Einstellungen eingetragen.
 Änderungen veröffentlichen: committen und `git push`. GitHub Pages baut dann in etwa einer Minute neu.
+
+## Abo-Fassung (ohne API-Schlüssel)
+https://claude.ai/artifact/RFFT4y7u8roiDFcUzfJfB7 (nur für dich sichtbar, solange du sie nicht teilst)
+
+Läuft als Claude-Artifact über dein Claude-Abo statt über API-Guthaben. Quelle: `artifact/uebersetzer.html`.
+Unterschiede zur API-Fassung: übersetzt auf Knopfdruck oder mit ⌘ + Enter (nicht beim Tippen), kein Einfügen-Knopf (⌘V nutzen), Modell wählt claude.ai (Stufe „default“).
+Änderungen: Datei bearbeiten und von Claude neu veröffentlichen lassen (gleiche Adresse bleibt).

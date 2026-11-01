@@ -15,11 +15,11 @@
     "claude"
   ],
   "naechsteSchritte": [
-    "Claude-API-Schlüssel in den Einstellungen eintragen und echte Übersetzungen testen",
-    "Auf dem iPhone in Safari öffnen und „Zum Home-Bildschirm“ wählen",
-    "Auf dem Mac in Safari „Ablage › Zum Dock hinzufügen“ wählen"
+    "Abo-Fassung in claude.ai öffnen, Claude erlauben und echte Übersetzungen testen",
+    "Prüfen, wie sich die Abo-Fassung auf dem iPhone öffnen lässt",
+    "Bei Bedarf API-Fassung mit eigenem Schlüssel nutzen"
   ],
-  "notizen": "Web-App (PWA) in app/, Design im Stil der Kommandozentrale. Claude-SDK 1.3.0 als eine Datei in app/vendor gebündelt. Modell claude-opus-5-5. Entwürfe A und B liegen in designs/. Online über GitHub Pages (Repository markusito888/uebersetzer, Zweig main). Änderungen: committen und pushen, Pages baut automatisch neu.",
+  "notizen": "Web-App (PWA) in app/, Design im Stil der Kommandozentrale. Claude-SDK 1.3.0 als eine Datei in app/vendor gebündelt. Modell claude-opus-5-5. Entwürfe A und B liegen in designs/. Online über GitHub Pages (Repository markusito888/uebersetzer, Zweig main). Änderungen: committen und pushen, Pages baut automatisch neu. Zweite Fassung ohne API-Schlüssel als Claude-Artifact (artifact/uebersetzer.html, Fähigkeit sample, läuft über das Claude-Abo): https://claude.ai/artifact/RFFT4y7u8roiDFcUzfJfB7",
   "verlauf": [
     {
       "datum": "2026-11-01",
@@ -36,6 +36,10 @@
     {
       "datum": "2026-11-01",
       "text": "Auf GitHub Pages veröffentlicht: markusito888.github.io/uebersetzer."
+    },
+    {
+      "datum": "2026-11-01",
+      "text": "Abo-Fassung als Claude-Artifact gebaut und veröffentlicht (ohne API-Schlüssel)."
     }
   ]
 }
