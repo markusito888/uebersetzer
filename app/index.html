@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0b0b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Übersetzer">
+<title>Übersetzer</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="kopf">
+  <h1 class="marke">Über<span>setzer</span></h1>
+  <div class="platz"></div>
+  <div class="segment" id="modus">
+    <button data-modus="genau">Genau</button>
+    <button data-modus="natuerlich">Natürlich <small>Kontext</small></button>
+  </div>
+  <nav class="nav">
+    <button data-ansicht="uebersetzen">Übersetzen</button>
+    <button data-ansicht="verlauf">Verlauf</button>
+    <button data-ansicht="einstellungen">Einstellungen</button>
+  </nav>
+</header>
+
+<main>
+  <!-- Übersetzen -->
+  <section id="ansicht-uebersetzen">
+    <div class="karte mobil-sprachen">
+      <button class="sprache" data-quellwahl></button>
+      <button class="tausch" data-tauschen title="Richtung tauschen">⇄</button>
+      <div class="chips ziel-chips" data-zielwahl data-kurz></div>
+    </div>
+    <div class="leiste">
+      <span class="feldkopf">Ton</span>
+      <div class="chips" id="ton"></div>
+      <div class="rechts">
+        <span class="feldkopf">Variante</span>
+        <div class="chips" id="variante"></div>
+      </div>
+    </div>
+    <p class="modus-info" id="modus-info"></p>
+    <div class="felder">
+      <div class="karte feld">
+        <div class="sprachzeile">
+          <button class="sprache" data-quellwahl title="Klicken: Sprache selbst festlegen"></button>
+          <div class="platz"></div>
+          <button class="tausch" data-tauschen title="Richtung tauschen">⇄</button>
+        </div>
+        <textarea class="eingabe" id="eingabe" placeholder="Text eingeben oder einfügen …" spellcheck="true"></textarea>
+        <div class="fuss">
+          <span id="zaehler">0 / 5000</span>
+          <span class="platz"></span>
+          <button class="knopf" id="einfuegen">Einfügen</button>
+          <button class="knopf" id="loeschen">Löschen</button>
+          <button class="knopf gold" id="los" title="⌘ + Enter">Übersetzen</button>
+        </div>
+      </div>
+      <div class="karte feld ziel">
+        <div class="sprachzeile"><span class="feldkopf">Nach</span><div class="chips ziel-chips" data-zielwahl></div></div>
+        <div class="ausgabe leer" id="ausgabe">Die Übersetzung erscheint hier.</div>
+        <div class="hinweise versteckt" id="hinweise"><b>Was angepasst wurde</b><ul></ul></div>
+        <div class="fuss">
+          <span id="laedt" class="laedt versteckt"><i></i><i></i><i></i> übersetzt …</span>
+          <span class="platz"></span>
+          <button class="knopf" id="vorlesen" disabled>🔊 Vorlesen</button>
+          <button class="knopf gold" id="kopieren" disabled>Kopieren</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Verlauf -->
+  <section id="ansicht-verlauf" class="versteckt">
+    <div class="kopfzeile"><h2>Verlauf</h2><span class="rechts"><button class="knopf" id="verlauf-leeren">Verlauf leeren</button></span></div>
+    <div class="verlauf-liste" id="verlauf-liste"></div>
+  </section>
+
+  <!-- Einstellungen -->
+  <section id="ansicht-einstellungen" class="versteckt">
+    <div class="kopfzeile"><h2>Einstellungen</h2></div>
+    <div class="einstellungen">
+      <div class="karte gruppe">
+        <h3>Claude-API-Schlüssel</h3>
+        <p>Die Übersetzung läuft über Claude. Den Schlüssel bekommst du unter <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">console.anthropic.com</a>. Er bleibt nur auf diesem Gerät gespeichert.</p>
+        <input class="feld-eingabe" id="schluessel" type="password" autocomplete="off" placeholder="sk-ant-…">
+        <div class="zeile"><button class="knopf gold" id="schluessel-speichern">Speichern</button><span class="status" id="schluessel-status"></span></div>
+      </div>
+      <div class="karte gruppe">
+        <h3>Verhalten</h3>
+        <label class="schalter"><input type="checkbox" id="auto"> Automatisch übersetzen, sobald ich aufhöre zu tippen</label>
+        <label class="schalter"><input type="checkbox" id="verlauf-an"> Übersetzungen im Verlauf speichern</label>
+      </div>
+      <div class="karte gruppe">
+        <h3>Über die Modi</h3>
+        <p><b>Genau:</b> bleibt so nah wie möglich am Original, wie ein klassischer Übersetzer.</p>
+        <p><b>Natürlich:</b> überträgt den Sinn und Ton, ersetzt Redewendungen, ergänzt logische Lücken und klingt wie von Einheimischen geschrieben. Darunter steht kurz, was angepasst wurde.</p>
+        <p>Modell: Claude Opus 5.5</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<nav class="tabbar">
+  <button data-ansicht="uebersetzen"><span>⇄</span>Übersetzen</button>
+  <button data-ansicht="verlauf"><span>◷</span>Verlauf</button>
+  <button data-ansicht="einstellungen"><span>⚙︎</span>Einstellungen</button>
+</nav>
+
+<div class="toast" id="toast"></div>
+<script type="module" src="app.js"></script>
+</body>
+</html>

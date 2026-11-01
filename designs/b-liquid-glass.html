@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entwurf B – Liquid Glass</title>
+<style>
+:root {
+  --tief: #05244a; --mitte: #0a5c8c; --akzent: #40ccfa;
+  --text: #ffffff; --text-2: rgba(255,255,255,.78); --text-3: rgba(255,255,255,.55);
+  --glas: linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.06));
+  --glas-rand: rgba(255,255,255,.18);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; min-height: 100vh; color: var(--text);
+  background: #031a36;
+  font: 15px/1.5 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.seite { max-width: 1440px; margin: 0 auto; padding: 32px 32px 80px; }
+.augenbraue { color: var(--akzent); letter-spacing: .28em; font-size: 12.5px; font-weight: 600; text-transform: uppercase; }
+h1 { font-size: 40px; margin: 10px 0 6px; font-weight: 800; letter-spacing: -.02em; }
+h1 span { color: var(--akzent); }
+.unter { color: var(--text-2); margin: 0 0 36px; }
+.buehne { display: flex; gap: 48px; align-items: flex-start; flex-wrap: wrap; }
+.beschriftung { color: var(--text-3); font-size: 12px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; margin-bottom: 12px; }
+
+/* Hintergrund wie MacPflege „Aktivität“ */
+.himmel { position: relative; overflow: hidden;
+  background:
+    radial-gradient(420px 300px at 60% 100%, rgba(64,204,250,.35), transparent 70%),
+    radial-gradient(360px 280px at 45% 35%, rgba(255,255,255,.10), transparent 70%),
+    linear-gradient(45deg, var(--tief), var(--mitte), var(--tief));
+}
+.himmel::before, .himmel::after { content: ""; position: absolute; border-radius: 50%; filter: blur(50px); pointer-events: none; }
+.himmel::before { width: 320px; height: 320px; left: -60px; top: 80px; background: rgba(64,204,250,.35); }
+.himmel::after { width: 260px; height: 260px; right: -40px; bottom: 40px; background: rgba(90,120,255,.35); }
+.himmel > * { position: relative; z-index: 1; }
+
+/* Glas */
+.glas {
+  background: var(--glas); border: 1px solid var(--glas-rand); border-radius: 20px;
+  backdrop-filter: blur(24px) saturate(170%); -webkit-backdrop-filter: blur(24px) saturate(170%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.35), inset 0 -1px 0 rgba(255,255,255,.05), 0 10px 30px rgba(0,10,30,.25);
+}
+.glas.ziel { background: linear-gradient(135deg, rgba(64,204,250,.26), rgba(255,255,255,.07)); border-color: rgba(64,204,250,.45); }
+
+/* Bausteine */
+.segment { display: inline-flex; padding: 4px; gap: 4px; border-radius: 999px; }
+.segment button { background: none; border: 0; color: var(--text-2); font: inherit; font-weight: 600; font-size: 14px; padding: 7px 18px; border-radius: 999px; cursor: pointer; display: flex; align-items: center; gap: 7px; }
+.segment button.an { color: #fff; background: radial-gradient(120% 140% at 50% 0%, rgba(255,255,255,.55), rgba(64,204,250,.75) 45%, rgba(10,92,140,.9)); box-shadow: inset 0 1px 0 rgba(255,255,255,.8), 0 0 18px rgba(64,204,250,.55); }
+.segment button .stern { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; opacity: .8; }
+.chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); color: var(--text-2); font: inherit; font-weight: 600; font-size: 13px; padding: 6px 14px; border-radius: 999px; cursor: pointer; backdrop-filter: blur(12px); }
+.chip.an { background: rgba(64,204,250,.25); border-color: rgba(64,204,250,.7); color: #fff; box-shadow: 0 0 14px rgba(64,204,250,.35); }
+.sprache { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 15px; }
+.sprache small { font-weight: 600; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #bff0ff; background: rgba(64,204,250,.22); padding: 3px 8px; border-radius: 999px; }
+.tausch { width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.75); color: #fff; font-size: 16px; cursor: pointer;
+  background: radial-gradient(circle at 50% 0%, var(--akzent), rgba(64,204,250,.45)); box-shadow: 0 0 16px rgba(64,204,250,.6); }
+.knopf { background: rgba(255,255,255,.10); border: 1px solid rgba(255,255,255,.2); color: #fff; font: inherit; font-size: 13px; font-weight: 600; padding: 6px 13px; border-radius: 999px; cursor: pointer; }
+.knopf.voll { background: radial-gradient(120% 160% at 50% 0%, #9be6ff, var(--akzent) 50%, #1b8fc4); border-color: rgba(255,255,255,.7); color: #03243f; box-shadow: 0 0 16px rgba(64,204,250,.5); }
+.feldkopf { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-3); font-weight: 700; }
+.hinweise { background: rgba(3,26,54,.35); border: 1px solid rgba(255,255,255,.12); border-radius: 14px; padding: 12px 14px; font-size: 13px; color: var(--text-2); }
+.hinweise b { color: var(--akzent); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
+.hinweise ul { margin: 6px 0 0; padding-left: 18px; }
+.hinweise li { margin: 3px 0; }
+.ausgabe-text { font-size: 19px; line-height: 1.5; color: #fff; }
+.quelle-text { font-size: 19px; line-height: 1.5; color: var(--text-2); }
+
+/* Mac-Fenster */
+.mac { width: 940px; border-radius: 16px; border: 1px solid rgba(255,255,255,.2); box-shadow: 0 40px 80px rgba(0,0,0,.55); }
+.titelleiste { height: 54px; display: flex; align-items: center; gap: 16px; padding: 0 18px; }
+.ampel { display: flex; gap: 8px; }
+.ampel i { width: 12px; height: 12px; border-radius: 50%; background: #ff5f57; }
+.ampel i:nth-child(2) { background: #febc2e; } .ampel i:nth-child(3) { background: #28c840; }
+.titelleiste .name { font-weight: 800; display: flex; align-items: center; gap: 10px; }
+.logo { width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center; font-size: 15px;
+  background: linear-gradient(180deg, rgba(255,255,255,.6), rgba(64,204,250,.75), rgba(10,92,140,.95)); border: 1px solid rgba(255,255,255,.6); box-shadow: 0 4px 10px rgba(0,0,0,.3); }
+.titelleiste .platz { flex: 1; }
+.mac-inhalt { padding: 6px 22px 22px; display: grid; gap: 16px; }
+.leiste { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.leiste .rechts { margin-left: auto; display: flex; align-items: center; gap: 10px; color: var(--text-3); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; }
+.modus-info { color: var(--text-2); font-size: 13px; }
+.felder { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.feld { padding: 18px; display: flex; flex-direction: column; gap: 12px; min-height: 300px; }
+.feld .fuss { margin-top: auto; display: flex; gap: 8px; align-items: center; color: var(--text-3); font-size: 12px; }
+.feld .fuss .platz { flex: 1; }
+.sprachzeile { display: flex; align-items: center; gap: 12px; }
+
+/* iPhone */
+.phone { width: 390px; height: 844px; border-radius: 54px; border: 10px solid #0d1520; box-shadow: 0 40px 80px rgba(0,0,0,.55); }
+.insel { position: absolute !important; top: 10px; left: 50%; transform: translateX(-50%); width: 120px; height: 34px; background: #000; border-radius: 20px; z-index: 3 !important; }
+.statusleiste { height: 50px; display: flex; justify-content: space-between; align-items: center; padding: 6px 30px 0; font-weight: 600; font-size: 15px; }
+.p-inhalt { padding: 6px 16px 0; display: grid; gap: 12px; }
+.p-inhalt h2 { margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -.02em; }
+.p-inhalt .segment { width: 100%; }
+.p-inhalt .segment button { flex: 1; justify-content: center; }
+.p-sprachen { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-radius: 999px; }
+.p-feld { padding: 14px; display: grid; gap: 8px; }
+.p-feld .quelle-text, .p-feld .ausgabe-text { font-size: 16px; }
+.p-feld .fuss { display: flex; gap: 8px; justify-content: flex-end; }
+.p-hinweise { font-size: 12px; }
+.tabbar { position: absolute !important; bottom: 14px; left: 16px; right: 16px; height: 62px; border-radius: 999px; display: flex; justify-content: space-around; align-items: center; font-size: 11px; font-weight: 600; color: var(--text-2); }
+.tabbar div { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 6px 16px; border-radius: 999px; }
+.tabbar div.an { color: #fff; background: rgba(64,204,250,.28); box-shadow: inset 0 1px 0 rgba(255,255,255,.4); }
+.tabbar span { font-size: 19px; line-height: 1; }
+</style>
+</head>
+<body>
+<div class="seite">
+  <div class="augenbraue">Entwurf B</div>
+  <h1>Stil <span>Liquid Glass</span></h1>
+  <p class="unter">Blauer Verlauf und Glas-Karten wie bei MacPflege „Aktivität“. Modus und Höflichkeit sind anklickbar.</p>
+
+  <div class="buehne">
+    <div>
+      <div class="beschriftung">Mac</div>
+      <div class="mac himmel geraet">
+        <div class="titelleiste">
+          <div class="ampel"><i></i><i></i><i></i></div>
+          <div class="name"><span class="logo">⇄</span>Übersetzer</div>
+          <div class="platz"></div>
+          <div class="segment glas">
+            <button data-modus="genau">Genau</button>
+            <button data-modus="natuerlich">Natürlich <span class="stern">Kontext</span></button>
+          </div>
+        </div>
+        <div class="mac-inhalt">
+          <div class="leiste">
+            <span class="feldkopf">Ton</span>
+            <div class="chips">
+              <button class="chip" data-ton="locker">Locker · tú</button>
+              <button class="chip" data-ton="neutral">Neutral</button>
+              <button class="chip" data-ton="hoeflich">Höflich · usted</button>
+            </div>
+            <div class="rechts">Variante
+              <div class="chips"><button class="chip an">Spanien</button><button class="chip">Lateinamerika</button></div>
+            </div>
+          </div>
+          <div class="modus-info"></div>
+          <div class="felder">
+            <div class="glas feld">
+              <div class="sprachzeile">
+                <div class="sprache">Englisch <small>Erkannt</small></div>
+                <div style="flex:1"></div>
+                <button class="tausch" title="Richtung tauschen">⇄</button>
+              </div>
+              <div class="quelle-text"></div>
+              <div class="fuss"><span>78 / 5000</span><span class="platz"></span><button class="knopf">Einfügen</button><button class="knopf">Löschen</button></div>
+            </div>
+            <div class="glas ziel feld">
+              <div class="sprachzeile"><div class="sprache">Spanisch</div></div>
+              <div class="ausgabe-text"></div>
+              <div class="hinweise"><b>Was angepasst wurde</b><ul></ul></div>
+              <div class="fuss"><span class="platz"></span><button class="knopf">🔊 Vorlesen</button><button class="knopf voll">Kopieren</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="beschriftung">iPhone</div>
+      <div class="phone himmel geraet">
+        <div class="insel"></div>
+        <div class="statusleiste"><span>9:41</span><span>●●● 100%</span></div>
+        <div class="p-inhalt">
+          <h2>Übersetzer</h2>
+          <div class="segment glas">
+            <button data-modus="genau">Genau</button>
+            <button data-modus="natuerlich">Natürlich</button>
+          </div>
+          <div class="glas p-sprachen">
+            <div class="sprache">Englisch <small>Erkannt</small></div>
+            <button class="tausch">⇄</button>
+            <div class="sprache">Spanisch</div>
+          </div>
+          <div class="chips">
+            <button class="chip" data-ton="locker">Locker</button>
+            <button class="chip" data-ton="neutral">Neutral</button>
+            <button class="chip" data-ton="hoeflich">Höflich</button>
+          </div>
+          <div class="glas p-feld"><div class="quelle-text"></div></div>
+          <div class="glas ziel p-feld">
+            <div class="ausgabe-text"></div>
+            <div class="fuss"><button class="knopf">🔊</button><button class="knopf voll">Kopieren</button></div>
+          </div>
+          <div class="hinweise p-hinweise"><b>Was angepasst wurde</b><ul></ul></div>
+        </div>
+        <div class="tabbar glas">
+          <div class="an"><span>⇄</span>Übersetzen</div>
+          <div><span>◷</span>Verlauf</div>
+          <div><span>⚙︎</span>Einstellungen</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="demo.js"></script>
+</body>
+</html>
